@@ -1,0 +1,25 @@
+body {
+    background-color: aquamarine;
+}
+.Login {
+    border: 1px solid darkgoldenrod;
+    background-color: darkseagreen;
+    margin: 2% auto;
+    left: auto;
+    width: 35%;
+    text-align: center;
+    padding: 10px;
+    height: 10%;
+    font-family: "Arial Black";
+}
+.inPut {
+    width: 20%;
+    padding: 0;
+}
+input, button {
+    width: 100%;
+    padding: 2%;
+}
+input:focus {
+    outline: none;
+}
