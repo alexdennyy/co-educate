@@ -14,58 +14,83 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2 btnMenu" id="topMenu">
-            <button class="btn btn-success btn-block">My Calendar</button>
-            <button class="btn btn-success btn-block">Resources</button>
+            <button class="btn btn-success btn-block calendarButton">My Calendar</button>
+            <button class="btn btn-success btn-block resourcesButton">Resources</button>
             <button class="btn btn-success btn-block">Test</button>
             <button class="btn btn-success btn-block">Test</button>
         </div>
-        <div class="col-md-7 calendar">
-            <ul class="weekdays">
-                <li>Mo</li>
-                <li>Tu</li>
-                <li>We</li>
-                <li>Th</li>
-                <li>Fr</li>
-                <li>Sa</li>
-                <li>Su</li>
-            </ul>
-            <ul class="days">
-                <li>30</li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-                <li>14</li>
-                <li>15</li>
-                <li>16</li>
-                <li>17</li>
-                <li>18</li>
-                <li>19</li>
-                <li>20</li>
-                <li>21</li>
-                <li>22</li>
-                <li>23</li>
-                <li>24</li>
-                <li>25</li>
-                <li>26</li>
-                <li>27</li>
-                <li>28</li>
-                <li>29</li>
-                <li>30</li>
-                <li>31</li>
-            </ul>
-        </div>
-        <div class="col-md-3 deadlines">
-            Upcoming Deadlines
+        <div class="calendarWrapper">
+            <div class="col-md-7 calendar">
+                <div class="month">
+                    <ul>
+                        <li class="prev">&#10094;</li>
+                        <li class="next">&#10095;</li>
+                        <li class="selectedMonth">May<br><span style="font-size:18px">2018</span></li>
+                    </ul>
+                </div>
+                <ul class="weekdays">
+                    <li>Mo</li>
+                    <li>Tu</li>
+                    <li>We</li>
+                    <li>Th</li>
+                    <li>Fr</li>
+                    <li>Sa</li>
+                    <li>Su</li>
+                </ul>
+                <ul class="days">
+                    <li class="prevMonth">30</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <li>18</li>
+                    <li>19</li>
+                    <li>20</li>
+                    <li>21</li>
+                    <li>22</li>
+                    <li>23</li>
+                    <li>24</li>
+                    <li>25</li>
+                    <li>26</li>
+                    <li>27</li>
+                    <li>28</li>
+                    <li>29</li>
+                    <li>30</li>
+                    <li>31</li>
+                </ul>
+                <div id="addDeadline">
+                    <select id="selectDeadlineTypes">
+                        <option value="hw">Homework</option>
+                        <option value="test">Test</option>
+                        <option value="group">Groupwork</option>
+                    </select>
+                    <input id="deadlineName"type="text" placeholder="Deadline name">
+                    <select id="selectDeadlineMonth">
+                        <option value="4">May</option>
+                        <option value="5">June</option>
+                    </select>
+                    <select id="selectDeadlineDay">
+
+                    </select>
+                    <button id="pushDeadlineButton" class="button btn-success">Add</button>
+                </div>
+            </div>
+            <div class="col-md-3 deadlines">
+                Upcoming Deadlines
+            </div>
         </div>
     </div>
 </div>
