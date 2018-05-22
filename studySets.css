@@ -1,22 +1,22 @@
 div {
     border: 1px solid darkgoldenrod;
     background-color: darkseagreen;
-    margin: 2%;
+    margin:  15px 2%;
     font-family: "Arial Black";
 }
 #switch {
     width: 15%;
     text-align: center;
     padding: .5%;
-    margin: .5%;
+    margin: 5px .5%;
     height: 10%;
 }
 .title {
     position: absolute;
     width: 77.2%;
-    height: 5.5%;
+    height: 40px;
     left: 20%;
-    top: -1.5%;
+    top: -10px;
     font-size: x-large;
     text-align: center;
 }
@@ -32,4 +32,13 @@ div {
 }
 #allSets {
     height: 500px;
+}
+.studySets {
+    float: left;
+    background-color: cadetblue;
+    border: none;
+    padding: 5px;
+}
+.studySets div {
+    font-size: small;
 }
