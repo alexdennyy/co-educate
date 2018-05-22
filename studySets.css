@@ -1,0 +1,35 @@
+div {
+    border: 1px solid darkgoldenrod;
+    background-color: darkseagreen;
+    margin: 2%;
+    font-family: "Arial Black";
+}
+#switch {
+    width: 15%;
+    text-align: center;
+    padding: .5%;
+    margin: .5%;
+    height: 10%;
+}
+.title {
+    position: absolute;
+    width: 77.2%;
+    height: 5.5%;
+    left: 20%;
+    top: -1.5%;
+    font-size: x-large;
+    text-align: center;
+}
+.noStroke {
+    border: none;
+    align-content: center;
+    left: auto;
+    align-self: center;
+}
+.center {
+    width: 60px;
+    margin: auto;
+}
+#allSets {
+    height: 500px;
+}
