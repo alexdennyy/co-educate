@@ -42,3 +42,6 @@ div {
 .studySets div {
     font-size: small;
 }
+#switch a {
+    color: black;
+}
