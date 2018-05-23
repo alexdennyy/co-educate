@@ -9,9 +9,23 @@
 .rightSide{
     float: left;
 }
+#deadlineTitle{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+
+.deadlineDate{
+    float: right;
+    position: relative;
+    top: -30px;
+}
+
 .deadlines{
     margin-top: 10%;
-    border: 1px solid black;
+    background: #1abc9c;
+    border-radius: 5px;
 }
 .days {
     padding: 10px;
@@ -51,7 +65,19 @@
 
 .days li .deadline {
     padding: 5px;
+    background: #1469bc;
+    color: white !important
+}
+
+.days li .test {
+    padding: 5px;
     background: #bc291f;
+    color: white !important
+}
+
+.days li .group {
+    padding: 5px;
+    background: #f013e8;
     color: white !important
 }
 
@@ -99,6 +125,7 @@
     float: left;
     padding-top: 10px;
 }
+
 
 /* Next button */
 .month .next {
