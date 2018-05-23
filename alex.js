@@ -11,7 +11,7 @@ function event(eventType, eventName, eventDay, eventMonth) {
 }
 $(function() {
     events.push(new event("deadline", "Homework Check", 22, 5));
-    events.push(new event("deadline", "Homework Check", 17, 4));
+    events.push(new event("deadline", "Homework Check", 25, 4));
     console.log(events);
     var date = new Date();
     var month = date.getMonth();
@@ -21,7 +21,7 @@ $(function() {
         loadJuneCalendar()
     }
 
-
+    findUpcomingDeadlines(date.getDate(), month);
     determineDate();
     buildDeadlineAdder();
     $(".resourcesButton").on("click", function(){
@@ -54,11 +54,28 @@ function pushDeadline(){
     if(monthDisplayed == 5){
         loadJuneCalendar();
     }
-
+    findUpcomingDeadlines();
 }
 
 function daysInMonthz(month, year){
     return new Date(year, month, 0).getDate();
+}
+
+function findUpcomingDeadlines(){
+    var date = new Date();
+    var currentMonth = date.getMonth();
+    var currentDay = date.getDate();
+    $(".deadlines").html("Upcoming deadlines")
+    for(var i = currentDay; i < (currentDay + 7); i++){
+        for(var t = 0; t < events.length; t++){
+            if(events[t].eventMonth == currentMonth){
+                if(events[t].eventDay == i){
+                    console.log(events[t].eventName);
+                    $(".deadlines").append("<p>"+ events[t].eventName +" "+ events[t].eventDay +"</p>")
+                }
+            }
+        }
+    }
 }
 function buildDeadlineAdder(){
     var date = new Date();
