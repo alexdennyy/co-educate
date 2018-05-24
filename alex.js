@@ -1,5 +1,5 @@
-var juneDays = "<li class='prevMonth'></li><li class='prevMonth'></li><li class='prevMonth'></li><li class='prevMonth'></li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li>"
-var mayDays = "<li class='prevMonth'></li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li>"
+var juneDays = "<li class='prevMonth'>28</li><li class='prevMonth'>29</li><li class='prevMonth'>30</li><li class='prevMonth'>31</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li>"
+var mayDays = "<li class='prevMonth'>30</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li>"
 var events = [];
 var monthDisplayed;
 
@@ -12,7 +12,6 @@ function event(eventType, eventName, eventDay, eventMonth) {
 $(function() {
     events.push(new event("deadline", "Homework Check", 22, 5));
     events.push(new event("deadline", "Homework Check", 25, 4));
-    events.push(new event("test", "Math Test", 29, 4));
     console.log(events);
     var date = new Date();
     var month = date.getMonth();
@@ -48,7 +47,7 @@ function pushDeadline(){
     var deadlineMonth = $("#selectDeadlineMonth").val();
     console.log(deadlineName);
 
-    events.push(new event(deadlineType, deadlineName, deadlineDay, deadlineMonth));
+    events.push(new event("deadline", deadlineName, deadlineDay, deadlineMonth));
     if(monthDisplayed == 4){
         loadMayCalendar();
     }
@@ -66,13 +65,13 @@ function findUpcomingDeadlines(){
     var date = new Date();
     var currentMonth = date.getMonth();
     var currentDay = date.getDate();
-    $(".deadlines").html("<div id='deadlineTitle'>Upcoming Deadlines</div>  ")
+    $(".deadlines").html("Upcoming deadlines")
     for(var i = currentDay; i < (currentDay + 7); i++){
         for(var t = 0; t < events.length; t++){
             if(events[t].eventMonth == currentMonth){
                 if(events[t].eventDay == i){
                     console.log(events[t].eventName);
-                    $(".deadlines").append("<p>"+ events[t].eventName +"<div class='deadlineDate'>" + convertMonthToName(currentMonth) + " " + events[t].eventDay + "</div></p>")
+                    $(".deadlines").append("<p>"+ events[t].eventName +" "+ events[t].eventDay +"</p>")
                 }
             }
         }
@@ -120,15 +119,6 @@ function determineDate(){
     }
 }
 
-function convertMonthToName(monthNumber){
-    if(monthNumber == 4){
-        return "May";
-    }
-    if(monthNumber == 5){
-        return "June"
-    }
-}
-
 function searchEvents(){
     var date = new Date();
     var day = date.getDate();
@@ -137,15 +127,7 @@ function searchEvents(){
         if(monthDisplayed == events[i].eventMonth){
             for(var t = 0; t < 31; t++){
                 if($(".days li:nth-child("+ t +")").html() == events[i].eventDay){
-                    if(events[i].eventType == "deadline") {
-                        $(".days li:nth-child(" + t + ")").html("<span class='deadline'>" + events[i].eventDay + "</span>")
-                    }
-                    if(events[i].eventType == "test"){
-                        $(".days li:nth-child(" + t + ")").html("<span class='test'>" + events[i].eventDay + "</span>")
-                    }
-                    if(events[i].eventType == "group"){
-                        $(".days li:nth-child(" + t + ")").html("<span class='group'>" + events[i].eventDay + "</span>")
-                    }
+                    $(".days li:nth-child("+ t +")").html("<span class='deadline'>" + events[i].eventDay + "</span>")
                 }
             }
         }

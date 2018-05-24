@@ -145,7 +145,15 @@
     background-color: #1abc9c;
     border: 1px solid goldenrod;
     padding: 5px;
-}
-#log {
     color: black;
+}
+#legend {
+    padding: 5px;
+    background-color: #55b862;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.legend {
+    text-align: center;
+    color: white;
 }

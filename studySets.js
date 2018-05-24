@@ -15,8 +15,8 @@ $(function() {
         $("#add div svg").animate({"opacity":0.5},"100");
         $("#add div svg").animate({"opacity":1},"100");
     });
-    $("#log").click(function() {
-        console.log("switch");
+    $("#switch").click(function() {
+        window.open("http://localhost:63342/co-educate/login.html?_ijt=63eu0isfj72ephhlgtdcujtpsl","_self")
     })
 });
 function getCollection() {
