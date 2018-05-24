@@ -156,4 +156,18 @@
 .legend {
     text-align: center;
     color: white;
+    border: 1px solid white;
+    margin: 5px;
+}
+#homework {
+    background-color: #1469bc;
+}
+#Tests {
+    background-color: #bc291f;
+}
+#groupWork {
+    background-color: #f013e8;
+}
+#currentDate {
+    background-color: #1abc9c;
 }
