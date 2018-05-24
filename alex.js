@@ -41,21 +41,22 @@ $(function() {
         loadMayCalendar();
     });
 });
-function pushDeadline(){
+function pushDeadline() {
     var deadlineType = $("#selectDeadlineTypes").val();
     var deadlineName = $("#deadlineName").val();
     var deadlineDay = $("#selectDeadlineDay").val();
     var deadlineMonth = $("#selectDeadlineMonth").val();
     console.log(deadlineName);
-
-    events.push(new event(deadlineType, deadlineName, deadlineDay, deadlineMonth));
-    if(monthDisplayed == 4){
-        loadMayCalendar();
+    if ($("#deadlineName").val() != "") {
+        events.push(new event(deadlineType, deadlineName, deadlineDay, deadlineMonth));
+        if (monthDisplayed == 4) {
+            loadMayCalendar();
+        }
+        if (monthDisplayed == 5) {
+            loadJuneCalendar();
+        }
+        findUpcomingDeadlines();
     }
-    if(monthDisplayed == 5){
-        loadJuneCalendar();
-    }
-    findUpcomingDeadlines();
 }
 
 function daysInMonthz(month, year){
