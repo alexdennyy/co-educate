@@ -25,6 +25,23 @@ $(function() {
     findUpcomingDeadlines(date.getDate(), month);
     determineDate();
     buildDeadlineAdder();
+    $(".days li span").on("mouseover", function(){
+        var day = $(this).html();
+        $(".hoverDateSelected").html(convertMonthToName(monthDisplayed) + " " + day);
+        for(var i = 0; i < events.length; i++){
+            if(events[i].eventMonth == monthDisplayed){
+                day = parseInt(day);
+                if(events[i].eventDay == day){
+                    $(".hoverDateEvents").html(events[i].eventName);
+                    $(".hoverDate").show();
+                    console.log("event found");
+                }
+            }
+        }
+    });
+    $(".days li span").on("mouseleave", function(){
+       $(".hoverDate").hide();
+    });
     $(".resourcesButton").on("click", function(){
         $(".calendarWrapper").hide();
     })
