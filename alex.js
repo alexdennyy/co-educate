@@ -26,6 +26,7 @@ $(function() {
     determineDate();
     buildDeadlineAdder();
     $(".days li span").on("mouseover", function(){
+        console.log("ys")
         var day = $(this).html();
         $(".hoverDateSelected").html(convertMonthToName(monthDisplayed) + " " + day);
         for(var i = 0; i < events.length; i++){
