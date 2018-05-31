@@ -1,38 +1,14 @@
-function post(path, params, method) {
-    method = method || "post"; // Set method to post by default if not specified.
-
-    // The rest of this code assumes you are not using a library.
-    // It can be made less wordy if you use one.
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", path);
-
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
-
-            form.appendChild(hiddenField);
-        }
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-}
 $(function() {
     var user = "";
     var pass = "";
     $("#log").click(function() {
         if($("#user").val() != "" && $("#pass").val() != "") {
-            $("#error").html("");
+            $("#error p").text("");
             user = $("#user").val();
             pass = $("#pass").val();
-            post('/contact/', {name: user,});
-
+            getUser(user,pass);
         } else {
-            $("#error").html("<p style='color:red;margin:auto;width:50%'>*You must input a name and password!</p>");
+            $("#error p").text("You must input a name and password!");
         }
     });
     $("#new").click(function() {
@@ -40,25 +16,44 @@ $(function() {
         if(x != "") {
             user = x;
             pass = prompt("Enter your password\nMake sure you can remember it!");
-            console.log(typeof(user));
-            console.log(typeof(pass));
-            $.ajax({
-                type: 'POST',
-                contentType: 'application/json',
-                data: {
-                    "email": "yateslough@students.berkeley",
-                    "password": "YatesIsCool"
-                },
-                dataType: 'json',
-                success: function(data){
-                    console.log("success");
-                },
-                error: function(){
-                    alert("failed");
-                },
-                url: 'https://slkidsbackend.herokuapp.com/coeducate/api/users'
-            });
-
+            createUser(user,pass);
         }
     })
 });
+function createUser(user,pass) {
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            "email": user,
+            "password": pass
+        }),
+        dataType: 'json',
+        success: function(data){
+            console.log(data);
+        },
+        error: function(){
+            alert("failed");
+        },
+        url: 'https://slkidsbackend.herokuapp.com/coeducate/api/users'
+    });
+}
+function getUser(user,pass) {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            if(data === null || pass != data.password) {
+                $("#error p").text("That's not a valid user and/or password!");
+            } else if(data.password === pass) {
+                console.log(data);
+                $("body").html("<img src=\"Loading_icon.gif\" alt=\"Loading...\" style=\"width:" + window.innerWidth + "px;height:auto;\">")
+                window.location.replace("studyPlan.html?_id=" + data._id);
+            }
+        },
+        error: function(){
+            alert("failed");
+        },
+        url: 'https://slkidsbackend.herokuapp.com/coeducate/api/users/' + user
+    });
+}

@@ -6,19 +6,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="login.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="yates.js"></script>
+    <script src="login.js"></script>
 </head>
 <body>
     <div id="myStudyPlan" class="Login">My Study Plan</div>
-    <div id="error" class="error"></div>
+    <div id="error" class="error"><p></p></div>
     <div id="userName" class="Login inPut">
         <input id="user" placeholder="Username" type="text"/>
     </div>
     <div id="passWord" class="Login inPut">
-        <input id="pass" placeholder="Password" type="text"/>
+        <input id="pass" placeholder="Password" type="password"/>
     </div>
     <div id="login" class="Login inPut">
         <button id="log">Log in</button>
+    </div>
+    <div class="Login inPut">
+        <button id="new">New</button>
     </div>
     <div id="studyPlan" class="Login">Create your own personalized study plan!</div>
 </body>

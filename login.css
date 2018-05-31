@@ -23,3 +23,11 @@ input, button {
 input:focus {
     outline: none;
 }
+#error p {
+    color: red;
+}
+#error {
+    align-content: center;
+    margin: auto;
+    width: 500px;
+}
