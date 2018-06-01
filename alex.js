@@ -14,7 +14,9 @@ $(function() {
 
     //testing query string params
     USER_ID = (getParameterByName("_id"));
-
+    $("#pushDeadlineButton").on("click", function(){
+        pushDeadline();
+    });
     loadPage(5);
     $(".prev").hide();
     events.push(new event("deadline", "Homework Check", 22, 5));
@@ -23,8 +25,24 @@ $(function() {
     findUpcomingDeadlines();
     searchEvents();
 
-    loadMayCalendar();
-    loadPage(4);
+    loadJuneCalendar();
+    loadPage(5);
+
+    $(".resourcesButton").on("click", function(){
+        $(".calendarWrapper").hide();
+    })
+    $(".calendarButton").on("click", function(){
+        $(".calendarWrapper").show();
+    })
+
+    $(".month .next").on("click", function () {
+        loadJuneCalendar();
+        loadPage(5);
+    });
+    $(".month .prev").on("click", function () {
+        loadMayCalendar();
+        loadPage(4);
+    });
 
 });
 function loadPage(sMonth) {
@@ -64,23 +82,6 @@ function loadPage(sMonth) {
     $(".days li span").on("mouseleave", function(){
         $(".hoverDate").hide();
     });
-    $(".resourcesButton").on("click", function(){
-        $(".calendarWrapper").hide();
-    })
-    $(".calendarButton").on("click", function(){
-        $(".calendarWrapper").show();
-    })
-    $("#pushDeadlineButton").mouseup(function(){
-        pushDeadline();
-    });
-    $(".month .next").on("click", function () {
-        loadJuneCalendar();
-        loadPage(5);
-    });
-    $(".month .prev").on("click", function () {
-        loadMayCalendar();
-        loadPage(4);
-    });
 }
 function pushDeadline() {
     var deadlineType = $("#selectDeadlineTypes").val();
@@ -89,12 +90,12 @@ function pushDeadline() {
     var deadlineMonth = $("#selectDeadlineMonth").val();
     console.log(deadlineName);
     var x = true;
-    for(var i in events) {
-        if($("#deadlineName") == events[i].eventName) {
-            x = false;
-        }
-    }
-    if ($("#deadlineName").val() != "" && x == true) {
+    // for(var i in events) {
+    //     if($("#deadlineName") == events[i].eventName) {
+    //         x = false;
+    //     }
+    // }
+    if ($("#deadlineName").val() != "") {
         events.push(new event(deadlineType, deadlineName, deadlineDay, deadlineMonth));
         loadPage(monthDisplayed);
         findUpcomingDeadlines();
@@ -161,9 +162,11 @@ function determineDate(){
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth();
-    for(var i = 0; i < 31; i++){
-        if($(".days li:nth-child("+ i +")").html() == day){
-            $(".days li:nth-child("+ i +")").html("<span class='active'>" + (i - 1) + "</span>")
+    if(month == monthDisplayed) {
+        for (var i = 0; i <= 31; i++) {
+            if ($(".days li:nth-child(" + i + ")").html() == day) {
+                $(".days li:nth-child(" + i + ")").html("<span class='active'>" + (i - 4) + "</span>")
+            }
         }
     }
 }
